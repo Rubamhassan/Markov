@@ -28,12 +28,19 @@ def make_chains(text_string):
     chains = {}
     poem = text_string.rstrip()
     lst_poem = poem.split() #this makes it into a list
-    for word in range(len(lst_poem) - 1): #for word in each string in poem except for last
-        chains[(lst_poem[word], lst_poem[word + 1])] = lst_poem[word + 2] #add tuple/key in dict; is equal to next value
-        if word in chains:
-            chains[word] = chains.get('word', lst_poem[word+2])
-        else:
-            chains[word] = lst_poem[word+2]
+
+    for word in range(len(lst_poem) - 2):
+        key = (lst_poem[word], lst_poem[word + 1])
+        value = lst_poem[word + 2]
+
+        # if key in chains:
+        #     chains[key].append(value)
+        # else:
+        #     chains[key] = [value]
+
+        chains[key] = chains.get(key, [])
+        chains[key].append(lst_poem[word+2])
+
     print chains
     return chains
 
