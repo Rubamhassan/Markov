@@ -47,37 +47,15 @@ def make_chains(text_string):
 
 def make_text(chains):
     """Takes dictionary of markov chains; returns random text."""
+    #print type(chains.keys())
+    key = choice(chains.keys())
+    words = [key[0],key[1]]
 
-    random_key = choice(chains.random_key())
-    words = [random_key[0], random_key[1]]
-
-    for key in chains:
-        word = chains(chains[key])
+    while key in chains:
+        word = choice(chains[key])
         words.append(word)
-        key = (key[1], word)
+        key = (key[1],word)
     return " ".join(words)
-
-
-    # random_key = choice(chains.keys())
-
-    # for key in random_key:
-    #     random_value = chains.values(key)
-    #     new_variable = " ".join(random_key, random_value)
-    #     new_key chain[key].append(new_variable) #make string a new key
-    #     chains.get(random_key)
-    #     return 
-    
-
-# find one inital random key
-
-# for loop
-#     use picked key to find value in dictionary (which is a tuple)
-#     new_variable = convert that key to a string
-#     new_key = ("second word in the first key", "random word from the list of words that follow")
-#     look up new_key in dictionary & pull new_random_word out of new_key
-#     return extend new_key in text = ""
-# print text
-
 
 
 input_path = "green-eggs.txt"
